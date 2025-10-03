@@ -80,9 +80,14 @@ def model_building_step(
         mlflow.sklearn.autolog()
 
         logging.info("Building and training the Linear Regression model.")
+        # In steps/model_building_step.py
+
+# PASTE THIS EXACT LINE right before pipeline.fit()
+        print("JSON_PAYLOAD_START###" + X_train.head(1).to_json(orient="split", index=False) + "###JSON_PAYLOAD_END")
+
         pipeline.fit(X_train, y_train)
         logging.info("Model training completed.")
-
+ 
         # Log the columns that the model expects
         onehot_encoder = (
             pipeline.named_steps["preprocessor"].transformers_[1][1].named_steps["onehot"]

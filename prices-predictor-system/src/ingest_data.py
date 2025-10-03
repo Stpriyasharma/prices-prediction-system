@@ -31,7 +31,7 @@ class ZipDataIngestor(DataIngestor):
 
         if len(csv_files) == 0:
             raise FileNotFoundError("No CSV file found in the extracted data.")
-        if len(csv_files) > 1:
+        if len(csv_files) ==2:
             raise ValueError("Multiple CSV files found. Please specify which one to use.")
 
         # Read the CSV into a DataFrame
